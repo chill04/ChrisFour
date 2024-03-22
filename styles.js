@@ -7,26 +7,12 @@ export const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
     },
-    tooltipPopup: {
-      position:'absolute',
-      zIndex:3 ,
-      alignSelf: "flex-start",
-      left:1,
-      backgroundColor: 'yellow',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: "fit-content",
-      borderRadius: 1,
-      padding: '10px',
-    },
     selectRowContainer: {
       flexDirection: 'row',
       width:'100%',
       paddingRight: '5%',
       padding: 3,
       maxWidth: '100%',
-      // backgroundColor: 'orange',
     },
     selectBox: {
       width:'50%',  
@@ -42,7 +28,6 @@ export const styles = StyleSheet.create({
       marginBottom:5, 
       backgroundColor:"#F5F5DC"
     },
-
     queryDescriptionText: {
       fontSize:20, 
       textAlign:'center',  
@@ -50,7 +35,6 @@ export const styles = StyleSheet.create({
       marginBottom:5,
       color: 'black',
     },
-
     table: {
       flex: 1,
       flexDirection: 'column',
@@ -100,11 +84,20 @@ export const styles = StyleSheet.create({
       textAlign: 'center',
       textAlignVertical: 'center',
     },
-    cellText: {
-      // flex: 1,
-      // textAlign: 'center',
-      // textAlignVertical: 'center',
+    tooltipPopup: {
+      position:'absolute',
+      zIndex:2,
+      backgroundColor: 'white',
+      // display: 'flex',
+      flexDirection: 'column',    
+      width:'auto',
+      // alignItems: 'center',
+      // justifyContent: 'center',
+      height: "fit-content",
+      // borderRadius: 1,
+      // padding: 5,
     },
+  
     tooltipButton:{
       fontSize:25,
     },

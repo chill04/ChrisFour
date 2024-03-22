@@ -1,8 +1,43 @@
 import Tooltip from 'rn-tooltip';
 import { styles } from './styles';
-import { Text, Image, View} from "react-native";
+import { Text, Image, View, ScrollView} from "react-native";
 import { imagePaths, pathStrings} from './justLists';
 
+
+export function tooltip(buttonText, popupText){
+    popupText = popupText.replaceAll('<br>', "\n").replace('<b','')
+    return (
+    <View style={styles.cell}> 
+    <Tooltip
+        closeOnlyOnBackdropPress={true}
+        withPointer={false}
+        withOverlay={false}
+        containerStyle = {styles.tooltipPopup}
+       
+        popover={
+            <Text style = {{color:'black', fontSize:20, fontWeight:'normal', padding:3}}>{popupText}</Text>}>
+        <Text style={styles.tooltipButton}>{buttonText}</Text>
+    </Tooltip>
+      </View>
+    );
+}
+
+export function imageTooltip(name_of_team){
+    const pathIndex = pathStrings.indexOf(getLogo(name_of_team))
+    const imgSource = imagePaths[pathIndex]
+    return (
+        <View>
+        <Tooltip
+        withPointer={false}
+        withOverlay={false}
+        containerStyle = {styles.tooltipPopup}
+            popover={
+            <Text style = {{fontSize:20, color:'black'}} >{name_of_team}</Text>}>
+            <Image style={styles.image} source = {imgSource} />
+        </Tooltip>
+        </View>
+    );
+}
 
 
 function getLogo(teamName){
@@ -17,50 +52,4 @@ function getLogo(teamName){
     var logoURL = './pnglogos/' + teamName + '.png';
     // console.log(logoURL)
     return logoURL;
-}
-
-export function tooltip(buttonText, popupText){
-    popupText = popupText.replaceAll('<br>', "\n")
-    return (
-     
-        <Tooltip
-        withPointer={false}
-        withOverlay={false}
-        containerStyle = {styles.tooltipPopup}
-        popover={
-        <Text>{popupText}</Text>}>
-        <Text style={[styles.tooltipButton]}>{buttonText}</Text>
-      </Tooltip>
-      
-    );
-}
-
-export function imageTooltip(name_of_team){
-    const pathIndex = pathStrings.indexOf(getLogo(name_of_team))
-    const imgSource = imagePaths[pathIndex]
-    return (
-        <View>
-        <Tooltip
-        withPointer={false}
-        withOverlay={false}
-        containerStyle = {{      
-            position:'absolute',
-            zIndex:30,
-            // top: "-50px",
-            top:400,
-            // alignSelf: "auto",
-            left:1,
-            backgroundColor: 'yellow',
-            // display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: "fit-content",
-            borderRadius: 1,
-            padding: '10px'}}
-            popover={
-            <Text>{name_of_team}</Text>}>
-            <Image style={styles.image} source = {imgSource} />
-        </Tooltip>
-        </View>
-    );
 }

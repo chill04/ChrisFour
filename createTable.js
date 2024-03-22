@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, } from 'react-native';
+import { View, Text, ScrollView} from 'react-native';
 import {styles} from './styles';
 import { teams_list, short_names_list, conferenceLookup} from './justLists';
 import {imageTooltip, tooltip } from './myTooltip';
@@ -14,6 +14,7 @@ function get_if_team(input){
       return input;
     }
   }
+
 
 const get_short = Object.assign(...teams_list.map((k, i) => ({[k]: short_names_list[i]})));
 
@@ -93,23 +94,22 @@ const CreateTable = ({
         //   acc_conference.push('STAN', 'CAL', 'SMU');
         //   sec_conference.push('TEX', 'OU');
         //   big_12_conference = ['UTAH', 'Ariz', 'ASU', 'Colo', 'WVU', 'OkSt', 'KU', 'TTU', 'TCU', 'KSU', 'ISU', 'Bay', 'HOU', 'BYU', 'UCF', 'Cinn'];
-        }
-
-
-        if (acc_conference.includes(team)){
-          conference_id = 'acc'} else 
-          if (big_12_conference.includes(team)){
-            conference_id = 'big-12'} else 
-          if (big_10_conference.includes(team)){
-            conference_id = 'big-ten'} else 
-          if (pac_conference.includes(team)){
-            conference_id = 'pac-12'} else 
-          if (sec_conference.includes(team)){
-            conference_id = 'sec'} else{
-          if (independents.includes(team)){
-            conference_id = 'ind'} 
-            else conference_id = "G5"}
-                  return conference_id;
+        } else {
+          if (acc_conference.includes(team)){
+            conference_id = 'acc'} else 
+            if (big_12_conference.includes(team)){
+              conference_id = 'big-12'} else 
+            if (big_10_conference.includes(team)){
+              conference_id = 'big-ten'} else 
+            if (pac_conference.includes(team)){
+              conference_id = 'pac-12'} else 
+            if (sec_conference.includes(team)){
+              conference_id = 'sec'} else{
+            if (independents.includes(team)){
+              conference_id = 'ind'} 
+              else conference_id = "G5"}
+                    return conference_id;
+            }
       }
     
     // var conference_name = game.team_conf;
@@ -127,7 +127,7 @@ const CreateTable = ({
       }
 
       if (!(years_selection == 'select')){      // filter by years
-          var endDate =  2024;
+          var endDate =  2023;
           var startDate = (endDate - years_selection);
 
         if (!(game.season >= startDate)){
@@ -152,16 +152,16 @@ const CreateTable = ({
           }
       }
 
-      if (home_field != "select"){   // filter by home or away
-        if ((home_field == 'home')){
-          if (game.field != 'h'){
+      if (home_field !== 0){   // filter by home or away
+        if ((home_field == 1)){
+          if (game.field !== 'h'){
             return false}
         } else if (
-          home_field == "away"){
+          home_field == 2){
           if (game.field != 'a'){
             return false}
         } else if (
-          home_field == "neutral"){
+          home_field == 3){
           if (game.field != 'n'){
             return false}
           }
@@ -305,25 +305,15 @@ const CreateTable = ({
       team_name = rankedArray[i][0];
       rankCounter++;
 
-      // my_img = '<div class="tooltip"><img class="top" src=' + getLogo(team_name) + '></img><span class="tooltiptext">'+ team_name +'</span></div>';
-      // my_img = team_name
-
       var losses  = count[team_name] - wins[team_name];
       if (losses == 0){
         winAverage[team_name] = 1;
       }
-  
-      // showWins = '<div class="tooltip">' + wins[team_name] + '<span class="tooltiptext">' + winsList[team_name] +'</span></div>';
-
       var lossString = " " + lossList[team_name];
       lossString = lossString.slice(0, -2);     
       if (lossString == ' undefin'){
         lossString = '';
       }
-      // showLosses = '<div class="tooltip">' + losses + '<span class="tooltiptext">' + lossString +'</span></div>';
-      // if (lossString == ''){
-      //   showLosses = losses;
-      // }
       var DisplayTotalorAverage
       if (totalOrAverage== 'total'){
         DisplayTotalorAverage = wins[team_name];
@@ -358,7 +348,6 @@ const CreateTable = ({
       return convertedData;
   };
   const convertedData = convertDataFormat(mytableAsArray);
-  // imageTooltip(team_name)
   
   function BuildTable(convertedData){
     // const rows
@@ -368,12 +357,13 @@ const CreateTable = ({
         <View key={index} style={[styles.row, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>        
           <Text style={styles.cell}>{rowData.Rank}</Text>
           {rowData.Team}
-          <View style={styles.cell}>{tooltip(rowData.Wins[0], rowData.Wins[1])}</View>
-          <View style={styles.cell}>{tooltip(rowData.Losses[0], rowData.Losses[1])}</View>
+          {tooltip(rowData.Wins[0], rowData.Wins[1])}
+          {tooltip(rowData.Losses[0], rowData.Losses[1])}
           <Text style={styles.cell}>{rowData.Games}</Text>
           <Text style={styles.cell}>{rowData.Average}</Text>
         </View>
       ));
+
       return (
         <View style={styles.table}>
           <View style={[styles.cell, styles.headerRow]}>

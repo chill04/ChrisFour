@@ -133,7 +133,7 @@ export default function App() {
     setDisplayField(displayText)
   };
   const handleConfAlignment = (selectedItem, index) => {
-    setConfAlignment(values[index]);
+    setConfAlignment(index);
   };
   const handleGamesMinimum = (selectedItem, index) => {
     values = [0,2,3,5,10]
@@ -147,14 +147,17 @@ export default function App() {
     <View style={styles.selectRowContainer} name = "1st row">
       <SelectDropdown  name = "Teams filter"
       buttonStyle = {styles.selectBox}
+      dropdownOverlayColor = 'transparent'
         data={['All Teams', 'ACC', 'Big 12', 'Big Ten', 'Pac-12', 'SEC', 'Include G5']}
         onSelect={handleTeamsFilter}
         defaultButtonText="Filter Teams"  />
 
 
       <Text>   </Text>
-      <SelectDropdown   name = "Sort type"
-      buttonStyle = {styles.selectBox}
+      <SelectDropdown   
+        name = "Sort type"
+        buttonStyle = {styles.selectBox}
+        dropdownOverlayColor = 'transparent'
         data={['Win %', 'Win Total']}
         onSelect={handleSortSelection}
         defaultValueByIndex={0}
@@ -164,6 +167,7 @@ export default function App() {
     <View style={styles.selectRowContainer} name = "2nd row">
       <SelectDropdown     name = "Opp conference"
       buttonStyle = {styles.selectBox}
+      dropdownOverlayColor = 'transparent'
         data={['VS Any Team', 'VS ACC', 'VS Big 12', 'VS Big Ten', 'VS Pac-12', 'VS SEC', 'Include G5']}
         onSelect={handleOppConf}
         defaultValueByIndex={0}   
@@ -171,6 +175,7 @@ export default function App() {
       <Text>   </Text>
       <SelectDropdown     name = "Opp rank"
         buttonStyle = {styles.selectBox}
+        dropdownOverlayColor = 'transparent'
         data={['Any Rank', 'Unranked','Top 25', 'Top 15', 'Top 10', 'Top 5', '#1', 'Higher rank', 'Lower rank']}
         onSelect={handleOppRank}
         defaultValueByIndex = {0}
@@ -179,6 +184,7 @@ export default function App() {
     <View style={styles.selectRowContainer}  name = "3rd row">
       <SelectDropdown   name = "Years"
         buttonStyle = {styles.selectBox}
+        dropdownOverlayColor = 'transparent'
         data={yearsOptions}
         onSelect={handleYears}
         buttonTextAfterSelection={getYearsButtonText}
@@ -187,6 +193,7 @@ export default function App() {
       <Text>   </Text>
       <SelectDropdown   name = "Field"
         buttonStyle = {styles.selectBox}
+        dropdownOverlayColor = 'transparent'
         data={['Any Field', 'Home','Away', 'Neutral' ]}
         onSelect={handleField}
         defaultValue = {'Any Field'}
@@ -195,6 +202,7 @@ export default function App() {
     <View style={styles.selectRowContainer}  name = "4th row">
       <SelectDropdown   name = "Conference Alignment"
         buttonStyle = {styles.selectBox}
+        dropdownOverlayColor = 'transparent'
         data={['Current', 'Historic']}
         onSelect={handleConfAlignment}
         defaultValueByIndex = {0}
@@ -202,8 +210,8 @@ export default function App() {
       <Text>   </Text>
       <SelectDropdown
         name = "Minimum games"
-        dropdownOverlayColor={0}
         buttonStyle = {styles.selectBox}
+        dropdownOverlayColor = 'transparent'
         data={['Min games: N/A', 'Min games: ≥2', 'Min games: ≥3', 'Min games: ≥5', 'Min games: ≥10']}
         onSelect={handleGamesMinimum}
         defaultValueByIndex = {0}
