@@ -36,10 +36,8 @@ export function tooltip(buttonText, popupText){
 }
 
 export function imageTooltip(name_of_team){
-    // const popupText = name_of_team
     const pathIndex = pathStrings.indexOf(getLogo(name_of_team))
     const imgSource = imagePaths[pathIndex]
-    // console.log(name_of_team, getLogo(name_of_team), pathIndex)
     return (
         <View>
         <Tooltip

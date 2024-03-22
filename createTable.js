@@ -28,8 +28,6 @@ if (team_name_index < short_names_list.length){
 }
 }
 
-
-
 const CreateTable = ({
   currentYear, selectedTeamsFilter, selectedSort, selectedOppConf, selectedOppRank, selectedYears, selectedField, selectedConfAlignment, selectedGamesMinimum
   }) => {
@@ -315,17 +313,17 @@ const CreateTable = ({
         winAverage[team_name] = 1;
       }
   
-      showWins = '<div class="tooltip">' + wins[team_name] + '<span class="tooltiptext">' + winsList[team_name] +'</span></div>';
+      // showWins = '<div class="tooltip">' + wins[team_name] + '<span class="tooltiptext">' + winsList[team_name] +'</span></div>';
 
       var lossString = " " + lossList[team_name];
       lossString = lossString.slice(0, -2);     
       if (lossString == ' undefin'){
         lossString = '';
       }
-      showLosses = '<div class="tooltip">' + losses + '<span class="tooltiptext">' + lossString +'</span></div>';
-      if (lossString == ''){
-        showLosses = losses;
-      }
+      // showLosses = '<div class="tooltip">' + losses + '<span class="tooltiptext">' + lossString +'</span></div>';
+      // if (lossString == ''){
+      //   showLosses = losses;
+      // }
       var DisplayTotalorAverage
       if (totalOrAverage== 'total'){
         DisplayTotalorAverage = wins[team_name];
@@ -337,14 +335,7 @@ const CreateTable = ({
           DisplayTotalorAverage = DisplayTotalorAverage.slice(1);
         }
       }
-      // var logoAndName = [[getLogo(team_name)], team_name];
-      var winsCount = wins[team_name];
-      /////////////////////////////////////////////////////////////////////////////////
-      // const filepath= require('./pnglogos/michigan.png')
-      // const filepath = require('./pnglogos/uab.png');
-      // const filepath= getLogo(team_name)
-      // const myImg = myImage(team_name)
-      // const teamLogoWithToolTip = myImageWithToolTip(myImg, team_name);
+
       const teamLogoWithToolTip = imageTooltip(team_name)
 
       var rowArray = [rankCounter, teamLogoWithToolTip, [wins[team_name], winsList[team_name]], [losses, lossString], count[team_name],DisplayTotalorAverage];
@@ -354,18 +345,7 @@ const CreateTable = ({
     return tableAsArray;
   }
   const mytableAsArray = displayPositionTable(jsonData);
-  //###############################################################################################################
-  // function myImage(team_name){
-  //   const pathIndex = pathStrings.indexOf(getLogo(team_name))
-  //   // console.log(team_name, pathIndex);
-  //   return(
-  //     <Image 
-  //     style = {styles.image}
-  //     source = {imagePaths[pathIndex]}
-  //     />
-  //   )
-  // }
- 
+   
   const convertDataFormat = (tableData) => {
     const headers = tableData[0];
     const convertedData = tableData.slice(1).map(row => {
@@ -386,23 +366,23 @@ const CreateTable = ({
     if (totalOrAverage == 'average'){
       rows = convertedData.map((rowData, index) => (
         <View key={index} style={[styles.row, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>        
-          <Text style={[styles.cell, styles.cellText]}>{rowData.Rank}</Text>
+          <Text style={styles.cell}>{rowData.Rank}</Text>
           {rowData.Team}
           <View style={styles.cell}>{tooltip(rowData.Wins[0], rowData.Wins[1])}</View>
           <View style={styles.cell}>{tooltip(rowData.Losses[0], rowData.Losses[1])}</View>
-          <Text style={[styles.cell, styles.cellText]}>{rowData.Games}</Text>
-          <Text style={[styles.cell, styles.cellText]}>{rowData.Average}</Text>
+          <Text style={styles.cell}>{rowData.Games}</Text>
+          <Text style={styles.cell}>{rowData.Average}</Text>
         </View>
       ));
       return (
         <View style={styles.table}>
-          <View style={styles.headerRow}>
+          <View style={[styles.cell, styles.headerRow]}>
             <Text style={styles.headerCell}>Rank</Text>
-            <Text style={styles.secondColumnHeaderCell}>Team</Text>
+            <Text style={styles.headerCell}>Team</Text>
             <Text style={styles.headerCell}>Wins</Text>
             <Text style={styles.headerCell}>Losses</Text>
             <Text style={styles.headerCell}>Games</Text>
-            <Text style={styles.headerCell}>Average</Text>
+            <Text style={styles.headerCell}>Avg</Text>
           </View>
           <View>
             {rows}
@@ -412,23 +392,21 @@ const CreateTable = ({
     } else {
       rows = convertedData.map((rowData, index) => (
         <View key={index} style={[styles.row, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>        
-          <Text style={[styles.cell, styles.cellText]}>{rowData.Rank}</Text>
+          <Text style={styles.cell}>{rowData.Rank}</Text>
           {rowData.Team}
           <View style={styles.cell}>{tooltip(rowData.Wins[0], rowData.Wins[1])}</View>
           <View style={styles.cell}>{tooltip(rowData.Losses[0], rowData.Losses[1])}</View>
-          <Text style={[styles.cell, styles.cellText]}>{rowData.Games}</Text>
-          {/* <Text style={[styles.cell, styles.cellText]}>{rowData.Average}</Text> */}
+          <Text style={styles.cell}>{rowData.Games}</Text>
         </View>
       ));
       return (
         <View style={styles.table}>
-          <View style={styles.headerRow}>
+          <View style={[styles.cell, styles.headerRow]}>
             <Text style={styles.headerCell}>Rank</Text>
-            <Text style={styles.secondColumnHeaderCell}>Team</Text>
+            <Text style={styles.headerCell}>Team</Text>
             <Text style={styles.headerCell}>Wins</Text>
             <Text style={styles.headerCell}>Losses</Text>
             <Text style={styles.headerCell}>Games</Text>
-            {/* <Text style={styles.headerCell}>Average</Text> */}
           </View>
           <View>
             {rows}

@@ -55,7 +55,6 @@ export const styles = StyleSheet.create({
       flex: 1,
       flexDirection: 'column',
       display:'flex',
-      // verticalAlign: "top",
       borderWidth: 3,
       margin:"2%",
       marginTop:0,
@@ -66,19 +65,22 @@ export const styles = StyleSheet.create({
     headerRow: {
       flexDirection: 'row',
       backgroundColor: 'lightgray',
+      height:40,
+      adjustsFontSizeToFit:true,
+      numberOfLines:1,
     },
     headerCell: {
       flex: 1,
       padding: 5,
+      color:"black",
       fontWeight: 'bold',
       textAlign:'center',
     },
     secondColumnHeaderCell: {
-      flex: 0.7,
-      padding: 5,
-      fontWeight: 'bold',
-      // width: 10, // Set a fixed width for the second column header cell
-      textAlign: 'center', // Center-align text within header cell
+      // flex: 0.7,
+      // padding: 5,
+      // fontWeight: 'bold',
+      // textAlign: 'center', // Center-align text within header cell
     },
     row: {
       flexDirection: 'row',
@@ -95,11 +97,13 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       zIndex:0,
-    },
-    cellText: {
-      flex: 1,
       textAlign: 'center',
       textAlignVertical: 'center',
+    },
+    cellText: {
+      // flex: 1,
+      // textAlign: 'center',
+      // textAlignVertical: 'center',
     },
     tooltipButton:{
       fontSize:25,
