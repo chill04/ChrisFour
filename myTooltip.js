@@ -34,7 +34,7 @@ export function tooltip(buttonText, popupText){
       
     );
 }
-{/* <Image source = {require('./pnglogos/arizona.png')} /> */}
+
 export function imageTooltip(name_of_team){
     // const popupText = name_of_team
     const pathIndex = pathStrings.indexOf(getLogo(name_of_team))

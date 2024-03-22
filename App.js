@@ -1,11 +1,6 @@
-// import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-// import * as Font from "expo-font";
-// import * as SplashScreen from 'expo-splash-screen';
 import { useState } from "react";
-import { View, ScrollView, Text, Image} from "react-native";
-// import { Button, CheckBox } from "react-native-elements";
+import { View, ScrollView, Text} from "react-native";
 import {styles} from './styles';
-import {tooltip} from './myTooltip';
 import SelectDropdown from 'react-native-select-dropdown';
 import CreateTable from './createTable';
 
@@ -146,25 +141,6 @@ export default function App() {
   };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
   <ScrollView style = {{backgroundColor: '#9ACD32'}}>
     <View name = "Top Banner" style={{ height: 20}} />   
@@ -224,7 +200,9 @@ export default function App() {
         defaultValueByIndex = {0}
       />  
       <Text>   </Text>
-      <SelectDropdown   name = "Minimum games"
+      <SelectDropdown
+        name = "Minimum games"
+        dropdownOverlayColor={0}
         buttonStyle = {styles.selectBox}
         data={['Min games: N/A', 'Min games: ≥2', 'Min games: ≥3', 'Min games: ≥5', 'Min games: ≥10']}
         onSelect={handleGamesMinimum}
@@ -235,10 +213,7 @@ export default function App() {
       style = {styles.queryDescriptionBox}
         >
       <Text 
-        style = {{fontSize:20, 
-        textAlign:'center',  
-        marginTop: 5, 
-        marginBottom:5}}>
+        style = {styles.queryDescriptionText}>
         Rank {displayConference} by {displayField}{displaySort}{versusPreposition}{displayOppRank}{displayOppConf}{opponentPreposition}{displayYears}
     </Text>
     </View>

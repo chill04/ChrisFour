@@ -42,6 +42,15 @@ export const styles = StyleSheet.create({
       marginBottom:5, 
       backgroundColor:"#F5F5DC"
     },
+
+    queryDescriptionText: {
+      fontSize:20, 
+      textAlign:'center',  
+      marginTop: 5, 
+      marginBottom:5,
+      color: 'black',
+    },
+
     table: {
       flex: 1,
       flexDirection: 'column',
