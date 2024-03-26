@@ -86,19 +86,16 @@ export const styles = StyleSheet.create({
     },
     tooltipPopup: {
       position:'absolute',
-      zIndex:2,
+      zIndex:1,
       backgroundColor: 'white',
-      // display: 'flex',
       flexDirection: 'column',    
       width:'auto',
-      // alignItems: 'center',
-      // justifyContent: 'center',
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
       height: "fit-content",
-      // borderRadius: 1,
-      // padding: 5,
     },
-  
-    tooltipButton:{
+      tooltipButton:{
       fontSize:25,
     },
     evenRow: {
@@ -112,13 +109,32 @@ export const styles = StyleSheet.create({
     },
     image: {
       flex:1,
-      width:65,
+      width:60,
       display:'flex',
-      height: 65,
+      height: 60,
       borderWidth: 1,
-      // borderColor:"green",
       justifyContent:'center',
       alignContent:'center'
+    },
+    overlay: {
+      flex: 1,
+      display:'flex',
+      justifyContent:'center',
+      alignContent:'center',
+      // backgroundColor: 'yellow',
+      maxHeight:'90%',
+      paddingHorizontal: 70,
+    },
+    popover: {
+      alignItems:'center',
+      // backgroundColor: 'white',
+    },
+    scrollView: {
+      padding: 20,
+      backgroundColor:'white',
+      borderRadius: 10,
+      borderColor:'blue',
+      elevation: 5,
     },
   }
 );
