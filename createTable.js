@@ -249,10 +249,10 @@ const CreateTable = ({
       var opponent = obj.opp_short;
       var oppRank = "";
       if (obj.opp_rank > 0){
-        oppRank = "(" + obj.opp_rank + ")";
+        oppRank = "#" + obj.opp_rank;
       }
 
-      var gameDictEntry = oppRank + ' ' +  opponent + ' ' + obj.season + '<br>';  
+      var gameDictEntry = obj.season + ' ' + oppRank + ' ' +  opponent + '<br>';  
 
       // Increment the total wins for the position
       if (obj.result == 'w'){
@@ -261,7 +261,7 @@ const CreateTable = ({
         var newList = winsList[team_name].concat(gameDictEntry);
         winsList[team_name] = newList;
       }
-      else {lossList[team_name] = ([lossList[team_name]]) + (oppRank + opponent + "-" + obj.season +'<br>');
+      else {lossList[team_name] = ([lossList[team_name]]) + (obj.season + ' ' + oppRank +' ' + opponent  +'<br>');
       }
 
       // Increment the games count for the position
@@ -310,10 +310,12 @@ const CreateTable = ({
         winAverage[team_name] = 1;
       }
       var lossString = " " + lossList[team_name];
-      lossString = lossString.slice(0, -2);     
-      if (lossString == ' undefin'){
+      lossString = lossString.slice(1, -4);     
+      if (lossString == ' undef'){
         lossString = '';
       }
+      winsList[team_name] = winsList[team_name].slice(0,-4);
+
       var DisplayTotalorAverage
       if (totalOrAverage== 'total'){
         DisplayTotalorAverage = wins[team_name];
@@ -351,7 +353,7 @@ const CreateTable = ({
   
   function BuildTable(convertedData){
     // const rows
-    console.log("buildTable()", totalOrAverage)
+    // console.log("buildTable()", totalOrAverage)
     if (totalOrAverage == 'average'){
       rows = convertedData.map((rowData, index) => (
         <View key={index} style={[styles.row, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>        
@@ -384,8 +386,8 @@ const CreateTable = ({
         <View key={index} style={[styles.row, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>        
           <Text style={styles.cell}>{rowData.Rank}</Text>
           {rowData.Team}
-          <View style={styles.cell}>{tooltip(rowData.Wins[0], rowData.Wins[1])}</View>
-          <View style={styles.cell}>{tooltip(rowData.Losses[0], rowData.Losses[1])}</View>
+          {tooltip(rowData.Wins[0], rowData.Wins[1])}
+          {tooltip(rowData.Losses[0], rowData.Losses[1])}
           <Text style={styles.cell}>{rowData.Games}</Text>
         </View>
       ));

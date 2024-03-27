@@ -60,12 +60,6 @@ export const styles = StyleSheet.create({
       fontWeight: 'bold',
       textAlign:'center',
     },
-    secondColumnHeaderCell: {
-      // flex: 0.7,
-      // padding: 5,
-      // fontWeight: 'bold',
-      // textAlign: 'center', // Center-align text within header cell
-    },
     row: {
       flexDirection: 'row',
       verticalAlign: 'middle',
@@ -74,7 +68,7 @@ export const styles = StyleSheet.create({
     cell: {
       display:'flex',
       flex:1,
-      height: 70,
+      height: 60,
       borderWidth: 1,
       borderColor:"green",
       fontSize:25,
@@ -112,9 +106,9 @@ export const styles = StyleSheet.create({
     },
     image: {
       flex:1,
-      width:65,
+      width:60,
       display:'flex',
-      height: 65,
+      height: 60,
       borderWidth: 1,
       // borderColor:"green",
       justifyContent:'center',
