@@ -174,7 +174,7 @@ export default function App() {
       <SelectDropdown     name = "Opp conference"
       buttonStyle = {styles.selectBox}
       dropdownOverlayColor = 'transparent'
-        data={['VS Any Team', 'VS ACC', 'VS Big 12', 'VS Big Ten', 'VS Pac-12', 'VS SEC', 'Include G5']}
+        data={['Vs Any Team', 'Vs ACC', 'Vs Big 12', 'Vs Big Ten', 'VS Pac-12', 'Vs SEC', 'Include G5']}
         onSelect={handleOppConf}
         defaultValueByIndex={0}   
         />
@@ -182,7 +182,7 @@ export default function App() {
       <SelectDropdown     name = "Opp rank"
         buttonStyle = {styles.selectBox}
         dropdownOverlayColor = 'transparent'
-        data={['Any Rank', 'Unranked','Top 25', 'Top 15', 'Top 10', 'Top 5', '#1', 'Higher rank', 'Lower rank']}
+        data={['Vs Any Rank', 'Vs Unranked','Vs Top 25', 'Vs Top 15', 'Vs Top 10', 'Vs Top 5', 'Vs #1', 'Vs Higher rank', 'Vs Lower rank']}
         onSelect={handleOppRank}
         defaultValueByIndex = {0}
         />
