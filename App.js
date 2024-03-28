@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, ScrollView, Text} from "react-native";
 import {styles} from './styles';
 import SelectDropdown from 'react-native-select-dropdown';
 import CreateTable from './createTable';
-
+import SplashScreen from 'react-native-splash-screen';
 
 export default function App() {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   const currentYear = new Date().getFullYear();
   const [selectedTeamsFilter, setTeamsFilter] = useState('power');
   const [selectedSort, setSort] = useState('average');
@@ -142,6 +146,8 @@ export default function App() {
 
 
   return (
+
+    
   <ScrollView style = {{backgroundColor: '#9ACD32'}}>
     <View name = "Top Banner" style={{ height: 20}} />   
     <View style={styles.selectRowContainer} name = "1st row">
