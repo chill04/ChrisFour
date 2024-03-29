@@ -6,7 +6,7 @@ import { imagePaths, pathStrings} from './justLists';
 export function tooltip(buttonText, popupText){
     // console.log(buttonText, 'popupText', popupText)
     if (buttonText == 0){
-        console.log(buttonText, 'no data')
+        // console.log(buttonText, 'no data')
         return <View style={styles.cell}><Text style={styles.tooltipButton}>{buttonText}</Text></View>
     } else{
     popupText = popupText.replaceAll('<br>', "\n").replace('<b','')

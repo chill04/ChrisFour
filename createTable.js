@@ -19,14 +19,14 @@ function get_if_team(input){
 const get_short = Object.assign(...teams_list.map((k, i) => ({[k]: short_names_list[i]})));
 
 function check_for_short(team_name_index){
-if (!(team_name_index >=0 )){  
-    return team_name_index;
-} else
-if (team_name_index < short_names_list.length){
-    return short_names_list[team_name_index];
-}else {
-    return teams_list[team_name_index];
-}
+    if (!(team_name_index >=0 )){  
+        return team_name_index;
+    } else
+    if (team_name_index < short_names_list.length){
+        return short_names_list[team_name_index];
+    }else {
+        return teams_list[team_name_index];
+    }
 }
 
 const CreateTable = ({
@@ -327,15 +327,14 @@ const CreateTable = ({
           DisplayTotalorAverage = DisplayTotalorAverage.slice(1);
         }
       }
-
       const teamLogoWithToolTip = imageTooltip(team_name)
 
       var rowArray = [rankCounter, teamLogoWithToolTip, [wins[team_name], winsList[team_name]], [losses, lossString], count[team_name],DisplayTotalorAverage];
       tableAsArray.push(rowArray);
     }
-    // console.log(tableAsArray)
     return tableAsArray;
   }
+
   const mytableAsArray = displayPositionTable(jsonData);
    
   const convertDataFormat = (tableData) => {
@@ -349,11 +348,10 @@ const CreateTable = ({
     });
       return convertedData;
   };
+
   const convertedData = convertDataFormat(mytableAsArray);
   
   function BuildTable(convertedData){
-    // const rows
-    // console.log("buildTable()", totalOrAverage)
     if (totalOrAverage == 'average'){
       rows = convertedData.map((rowData, index) => (
         <View key={index} style={[styles.row, index % 2 === 0 ? styles.evenRow : styles.oddRow]}>        
@@ -364,8 +362,8 @@ const CreateTable = ({
           <Text style={styles.cell}>{rowData.Games}</Text>
           <Text style={styles.cell}>{rowData.Average}</Text>
         </View>
-      ));
-
+        )
+      );
       return (
         <View style={styles.table}>
           <View style={[styles.cell, styles.headerRow]}>
@@ -406,7 +404,7 @@ const CreateTable = ({
         </View>
       )
 
-
+      
     }
   }
   const finalTable = BuildTable(convertedData);
