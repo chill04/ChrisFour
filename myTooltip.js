@@ -12,17 +12,13 @@ export function tooltip(buttonText, popupText){
     popupText = popupText.replaceAll('<br>', "\n").replace('<b','')
     }
 
-
     return (
     <View style={styles.cell}> 
     <Tooltip
-        withPointer={false}
-        withOverlay={false}
-        containerStyle = {styles.tooltipPopup}
-       
+        withPointer={false} withOverlay={false} containerStyle = {styles.tooltipPopup}
         popover={<ScrollView style={{ width:'maxWidth', height: 'auto', maxHeight:400}}>
             <View onStartShouldSetResponder={() => true}>
-                <Text style = {{color:'black', fontSize:20, fontWeight:'normal', padding:3, lineHeight:30}}>{popupText}</Text>
+                <Text style = {{color:'black', fontSize:20, fontWeight:'normal', padding:-3, lineHeight:30}}>{popupText}</Text>
            </View>
         </ScrollView>
             }>
@@ -31,6 +27,37 @@ export function tooltip(buttonText, popupText){
       </View>
     );
 }
+
+export function whenTooltip(buttonText, popupText){
+    if (buttonText == 0){
+        return <View style={styles.cell}><Text style={styles.tooltipButton}>{buttonText}</Text></View>
+    } else{
+    popupText = popupText.replaceAll('<br>', "\n").replace('<b','')
+    }
+    return (
+    <>
+      <Tooltip
+        withPointer={false}
+        withOverlay={false}
+        containerStyle = {styles.tooltipPopup}
+       
+        popover={
+        <ScrollView style={{ width:'maxWidth', height: 'auto', maxHeight:400}}>
+            <View onStartShouldSetResponder={() => true}>
+                <Text style = {{color:'black', fontSize:20, fontWeight:'normal', padding:3, lineHeight:30}}>{popupText}</Text>
+           </View>
+        </ScrollView>
+        }>  
+        <Text style={[styles.buttonText, {fontSize:20,alignItems: 'center',justifyContent: 'center',}]}>{buttonText}</Text>
+      </Tooltip>
+    </>
+    );
+}
+
+
+
+
+
 
 export function imageTooltip(name_of_team){
     const pathIndex = pathStrings.indexOf(getLogo(name_of_team))
